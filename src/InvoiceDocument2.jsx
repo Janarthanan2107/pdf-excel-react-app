@@ -8,7 +8,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 const InvoiceGenerator = () => {
   const downloadInvoice = () => {
-    // Create document definition
+    // Create document definition with additional styles
     const documentDefinition = {
       content: [
         { text: "Invoice", style: "header" },
@@ -43,6 +43,18 @@ const InvoiceGenerator = () => {
           fontSize: 14,
           marginTop: 10,
           alignment: "right",
+          bold: true,
+        },
+        // Additional styles
+        title: {
+          fontSize: 18,
+          marginBottom: 10,
+          alignment: "left",
+          decoration: "underline",
+        },
+        address: {
+          fontSize: 12,
+          marginBottom: 5,
           bold: true,
         },
       },
