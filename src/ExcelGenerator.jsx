@@ -1,4 +1,3 @@
-// ExcelGenerator.js
 import React from "react";
 import * as XLSX from "xlsx";
 import { saveAs } from "file-saver";
@@ -19,18 +18,6 @@ const ExcelGenerator = () => {
     // Add a worksheet to the workbook
     const worksheet = XLSX.utils.aoa_to_sheet(data);
     XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
-
-    // Style the worksheet (optional)
-    const range = XLSX.utils.decode_range(worksheet["!ref"]);
-    for (let i = range.s.r; i <= range.e.r; i++) {
-      for (let j = range.s.c; j <= range.e.c; j++) {
-        const cell = worksheet[XLSX.utils.encode_cell({ r: i, c: j })];
-        cell.s = {
-          font: { bold: true },
-          fill: { fgColor: { rgb: "FFFF00" } },
-        };
-      }
-    }
 
     // Convert the workbook to a binary string
     const excelBinaryString = XLSX.write(workbook, {
